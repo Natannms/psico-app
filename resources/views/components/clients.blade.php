@@ -1,4 +1,5 @@
 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <h1 class="mt-8 text-2xl font-medium text-gray-900">
         Clientes
     </h1>
@@ -54,9 +55,31 @@
                            @endswitch
                         </td>
                         <td class="flex gap-4">
-                            <a class="p-2 bg-green-600 text-white font-bold text-center rounded" href="https://wa.me/{{$client->userMetadata->phone}}">Whatsapp</a>
-                            <a class="p-2 bg-orange-600 text-white font-bold text-center rounded" href="mailto:{{$client->email}}">Enviar email</a>
-                            <a class="p-2 bg-blue-600 text-white font-bold text-center rounded" href="/dashboard/agendamentos/{{$client->id}}/cliente"> Agendamentos </a>
+                            <a class="p-2 bg-white text-green-800 border border-green-800 hover:bg-green-800 hover:text-white font-bold text-center rounded flex gap-4 items-center" href="https://wa.me/{{$client->userMetadata->phone}}">
+                                whatsapp
+                                <span class="material-symbols-outlined">
+                                    chat
+                                    </span>
+                            </a>
+                            <a class="p-2 bg-purple-800 hover:bg-white border border-purple-800 hover:text-purple-800 text-white font-bold text-center rounded" href="mailto:{{$client->email}}">
+                                <span class="material-symbols-outlined">
+                                    mail
+                                    </span>
+                            </a>
+                            <a class="p-2 bg-purple-800 hover:bg-white border border-purple-800 hover:text-purple-800 text-white font-bold text-center rounded" href="/dashboard/agendamentos/{{$client->id}}/cliente">
+                                <span class="material-symbols-outlined">
+                                    auto_stories
+                                    </span>
+                            </a>
+                            <a data-tooltip-target="tooltip-default" class="p-2 bg-purple-800 hover:bg-white border border-purple-800 hover:text-purple-800 text-white font-bold text-center rounded" href="/dashboard/agendamentos/{{$client->id}}/cliente">
+                                <span class="material-symbols-outlined">
+                                    edit_calendar
+                                    </span>
+                            </a>
+                            <div id="tooltip-default" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-800 hover:bg-white border border-gray-800 hover:text-gray-800 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                Tooltip content
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

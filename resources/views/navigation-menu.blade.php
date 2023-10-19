@@ -108,6 +108,11 @@
                                 </x-dropdown-link>
                             @endif
 
+                            @if(Auth::user()->type == 'admin')
+                            <x-dropdown-link href="{{ route('images.edit', ['user_id' => Auth::user()->id]) }}">
+                                {{ __('Atualizar imagens') }}
+                            </x-dropdown-link>
+                        @endif
                             <div class="border-t border-gray-200"></div>
 
                             <!-- Authentication -->

@@ -12,16 +12,32 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="w-full mx-auto sm:px-6 lg:px-8">
+        <form class="w-full mx-auto sm:px-6 lg:px-8" method="POST" action="/report/update/{{ $report->id }}">
+            @if (session('error'))
+                <div class="bg-red-500 text-white p-4 mb-4">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="bg-green-500 text-white p-4 mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="flex justify-end mb-4">
-                <button class="bg-blue-500 p-2 text-center rounded-xl text-white font-bold ">Atualizar relatório</button>
+                <button type="submit" class="bg-blue-500 p-2 text-center rounded-xl text-white font-bold ">Atualizar
+                    relatório</button>
             </div>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div id="summernote">
-                    @if ($report->report !== '')
-                        {{$report->report}}
-                    @endif
-                </div>
+                @csrf
+                @if ($report->report !== '')
+                    <textarea name="report" id="summernote">
+                        {{ $report->report }}
+                    </textarea>
+                @else
+                    <p>Não há informações para esse relatório.</p>
+                @endif
                 <script>
                     $('#summernote').summernote({
                         placeholder: 'Hello stand alone ui',
@@ -39,6 +55,6 @@
                     });
                 </script>
             </div>
-        </div>
+        </form>
     </div>
 </x-app-layout>

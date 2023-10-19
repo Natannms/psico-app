@@ -12,6 +12,18 @@ class UserMetaData extends Model
     protected $fillable = [
         'user_id',
         'phone',
-        'cpf'
+        'cpf',
+        'cpr',
+        'cep',
+        'logradouro',
+        'complemento',
+        'bairro',
+        'localidade',
+        'uf',
+        'ddd',
+        'primary_color',
+        'secondary_color',
+        'seal',
+        'logo',
     ];
 }

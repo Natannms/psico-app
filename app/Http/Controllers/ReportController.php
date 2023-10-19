@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use App\Http\Controllers\Controller;
+use Faker\Core\Number;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -54,9 +55,22 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Report $report)
+    public function update(Request $request, $report_id)
     {
-        //
+         $report =  Report::find($report_id);
+
+         if(!$report){
+            return back()->with('error', 'Relatório nao pode ser encontrado');
+        }
+
+        $report->report = $request->report;
+
+        if(!$report->save()){
+            return back()->with('error', 'Relatório nao pode ser atualizado');
+         }
+
+         return back()->with('success', 'Atualizado com sucesso');
+        //  return $request->all();
     }
 
     /**
